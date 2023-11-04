@@ -1,0 +1,6 @@
+/home/greg/prgrm/c++/wallpaperVulkan/build/CMakeFiles/directories.dir
+/home/greg/prgrm/c++/wallpaperVulkan/build/CMakeFiles/wayland-vulkan-example.dir
+/home/greg/prgrm/c++/wallpaperVulkan/build/CMakeFiles/wayland_xdg_shell_header.dir
+/home/greg/prgrm/c++/wallpaperVulkan/build/CMakeFiles/wayland_xdg_shell_source.dir
+/home/greg/prgrm/c++/wallpaperVulkan/build/CMakeFiles/edit_cache.dir
+/home/greg/prgrm/c++/wallpaperVulkan/build/CMakeFiles/rebuild_cache.dir

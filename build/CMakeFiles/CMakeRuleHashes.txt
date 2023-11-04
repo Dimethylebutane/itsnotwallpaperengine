@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+fa35a70789a799361994f8d31d097fa7 CMakeFiles/directories
+8a3e2f20ce8ae50e220d8996a6796678 CMakeFiles/wayland_xdg_shell_header
+d2e7269cb3cab5317a0b0184b05757d4 CMakeFiles/wayland_xdg_shell_source

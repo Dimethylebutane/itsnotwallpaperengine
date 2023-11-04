@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/greg/prgrm/c++/wallpaperVulkan/build",
+  "command": "/usr/bin/c++ -Dwayland_vulkan_example_EXPORTS -I/home/greg/prgrm/c++/wallpaperVulkan/src -fPIC   -g -o CMakeFiles/wayland-vulkan-example.dir/src/main.cpp.o -c /home/greg/prgrm/c++/wallpaperVulkan/src/main.cpp",
+  "file": "/home/greg/prgrm/c++/wallpaperVulkan/src/main.cpp",
+  "output": "CMakeFiles/wayland-vulkan-example.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/greg/prgrm/c++/wallpaperVulkan/build",
+  "command": "/usr/bin/cc -Dwayland_vulkan_example_EXPORTS -I/home/greg/prgrm/c++/wallpaperVulkan/src -fPIC   -g -o CMakeFiles/wayland-vulkan-example.dir/src/xdg-shell.c.o -c /home/greg/prgrm/c++/wallpaperVulkan/src/xdg-shell.c",
+  "file": "/home/greg/prgrm/c++/wallpaperVulkan/src/xdg-shell.c",
+  "output": "CMakeFiles/wayland-vulkan-example.dir/src/xdg-shell.c.o"
+}
+]
