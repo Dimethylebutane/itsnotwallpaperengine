@@ -1,2 +1,5 @@
 *.tasks
 .cache/*
+build/CMakeFiles/
+build/CM*
+build/cm*

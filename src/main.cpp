@@ -346,6 +346,7 @@ static void createSwapchain()
 
         elements[i].lastFence = VK_NULL_HANDLE;
     }
+    resize = false;
 }
 
 static void destroySwapchain()
@@ -464,7 +465,7 @@ void createVkstuff() { //also create swapchain
     }
 
     createSwapchain();
-
+   newSurfaceToUse = false;
 }
 
 void cleanVkstuff() {
@@ -619,10 +620,10 @@ __attribute__((visibility("default"))) void fun(ExternalRendererCom* Com)
     {
         if (newSurfaceToUse) {
            cleanVkstuff();
-           createVkstuff();
+           surface = newSurface;
+           createVkstuff(); //also recreate swapchain
            continue;
-        }
-        if (resize)
+        } else if (resize)
         {
             width = newWidth;
             height = newHeight;
@@ -634,8 +635,6 @@ __attribute__((visibility("default"))) void fun(ExternalRendererCom* Com)
 
             currentFrame = 0;
             imageIndex = 0;
-
-            resize = 0;
 
             wl_surface_commit(surface);
         }
@@ -668,6 +667,17 @@ __attribute__((visibility("default"))) void fun(ExternalRendererCom* Com)
         CHECK_VK_RESULT(vkBeginCommandBuffer(element->commandBuffer, &beginInfo));
 
         {
+           static float f = 0;
+           static float d = 0.1;
+           f += d;
+           if (f >= 1) {
+              f = 1;
+              d = -d;
+           } else if (f <= 0) {
+              f = 0;
+              d = -d;
+           }
+
            //Ugly as fuck TODO
             VkClearValue clearValue = {{
                 1.0f,
@@ -724,7 +734,7 @@ __attribute__((visibility("default"))) void fun(ExternalRendererCom* Com)
 
         currentFrame = (currentFrame + 1) % imageCount;
 
-        wl_display_roundtrip(display);
+        //wl_display_roundtrip(display);
     }
 
     cleanVkstuff();
