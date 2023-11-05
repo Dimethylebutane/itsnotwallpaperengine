@@ -1,5 +1,4 @@
 *.tasks
 .cache/*
-build/CMakeFiles/
-build/CM*
-build/cm*
+build/*
+!build/hyprpaper.conf
