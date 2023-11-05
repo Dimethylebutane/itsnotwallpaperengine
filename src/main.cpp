@@ -373,8 +373,9 @@ void getComData(ExternalRendererCom* pdata) {
    newHeight = pdata->updtData.height;
    newSurface = pdata->updtData.surface;
    newSurfaceToUse = (newSurface != surface);
+   resize = (width != newWidth) || (height != newHeight) || newSurfaceToUse;
 
-   std::cout << newWidth << " " << newHeight << "\n";
+   std::cout << "Extrnl updt: " << newWidth << " " << newHeight << "\n";
    pdata->status.store(true, std::memory_order_release);
 }
 
@@ -393,6 +394,7 @@ bool handleUpdate(ExternalRendererCom* Com) {
          return false;
          break;
    }
+   Com->event.store(ExternalRendererCom::Event::none, std::memory_order_acquire);
    return false; //???
 }
 
@@ -492,25 +494,6 @@ __attribute__((visibility("default"))) void fun(ExternalRendererCom* Com)
     resize = false;
     width = newWidth;
     height = newHeight;
-
-    std::cout << reinterpret_cast<uint64_t>(surface) << " \n";
-    std::cout << ((surface == nullptr) ? "Surface is null\n" : "surface is ok\n");
-    /*CHECK_WL_RESULT(display = wl_display_connect(NULL));
-
-    //CHECK_WL_RESULT(registry = wl_display_get_registry(display));
-    //wl_registry_add_listener(registry, &registryListener, NULL);
-    //wl_display_roundtrip(display);
-
-    //CHECK_WL_RESULT(surface = wl_compositor_create_surface(compositor));
-
-    //CHECK_WL_RESULT(shellSurface = xdg_wm_base_get_xdg_surface(shell, surface));
-    //xdg_surface_add_listener(shellSurface, &shellSurfaceListener, NULL);
-
-    //CHECK_WL_RESULT(toplevel = xdg_surface_get_toplevel(shellSurface));
-    //xdg_toplevel_add_listener(toplevel, &toplevelListener, NULL);
-
-    //xdg_toplevel_set_title(toplevel, appName);
-    //xdg_toplevel_set_app_id(toplevel, appName);*/
 
     //make sure configuration by compositor
     wl_surface_commit(surface);
@@ -636,7 +619,7 @@ __attribute__((visibility("default"))) void fun(ExternalRendererCom* Com)
             currentFrame = 0;
             imageIndex = 0;
 
-            wl_surface_commit(surface);
+            //wl_surface_commit(surface);
         }
 
         struct SwapchainElement* currentElement = &elements[currentFrame];
